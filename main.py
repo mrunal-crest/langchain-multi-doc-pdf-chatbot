@@ -9,11 +9,6 @@ import os
 from langchain.chains.question_answering import load_qa_chain
 from langchain_community.llms import OpenAI
 import streamlit as st
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.chains import ConversationalRetrievalChain
-from langchain.chat_models import ChatOpenAI
-from langchain.document_loaders import DirectoryLoader
-import pinecone
 from dotenv import load_dotenv
 load_dotenv()
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
