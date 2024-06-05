@@ -1,8 +1,5 @@
 import os
 import streamlit as st
-from langchain_openai import OpenAIEmbeddings
-from pinecone import Pinecone
-from openai import OpenAI
 from dotenv import load_dotenv
 from main import create_chain, generate_response
 
