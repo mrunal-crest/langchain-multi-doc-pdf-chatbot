@@ -1,9 +1,7 @@
 import os
-import uuid
 import streamlit as st
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
-from pinecone import Pinecone
 import tiktoken
 from langchain_openai import OpenAIEmbeddings, OpenAI
 from langchain.chains.question_answering import load_qa_chain
