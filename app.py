@@ -9,20 +9,24 @@ from main import create_chain, generate_response
 # Load environment variables
 load_dotenv()
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-PINECONE_APIKEY = os.getenv('PINECONE_APIKEY')
 
 def chat_app():
+    """
+    Main function to create and run the Streamlit chat application.
+    """
     try:
         # Streamlit app title
         st.title("Langchain Chat Bot")
 
         # Sidebar PDF selection
-        pdf_select = st.sidebar.radio("Please select your PDF", ["Airbus-Annual-Report-2023", "annualreport2223", "Sample PDF"], index=2)
+        pdf_select = st.sidebar.radio(
+            "Please select your PDF",
+            ["Airbus-Annual-Report-2023", "annualreport2223"],
+            index=1
+        )
         if pdf_select == "Airbus-Annual-Report-2023":
             pdf_path = "Airbus-Annual-Report-2023.pdf"
-        elif pdf_select == "Sample PDF":
-            pdf_path = "pdf_files_scan_create_reducefilesize.pdf"
-        else:
+        elif pdf_select == "annualreport2223":
             pdf_path = "annualreport2223.pdf"
 
         # Initialize session state for storing chains and docsearches
