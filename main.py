@@ -12,13 +12,13 @@ from langchain_community.vectorstores import FAISS
 load_dotenv()
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
-def estimate_tokens(text, model="gpt-4"):
+def estimate_tokens(text, model="gpt-3.5-turbo-16k’"):
     """
     Estimate the number of tokens in a given text for a specific model.
 
     Args:
         text (str): The input text to estimate tokens for.
-        model (str): The model to use for token estimation (default is "gpt-4").
+        model (str): The model to use for token estimation (default is "gpt-3.5-turbo-16k’").
 
     Returns:
         int: The estimated number of tokens.
@@ -71,7 +71,6 @@ def create_chain(pdf_path):
             return None, None
         token_count = estimate_tokens(texts)
         print(f"The estimated number of tokens in the PDF is: {token_count}")
-        st.sidebar.write(f"The estimated number of tokens in the PDF is: {token_count}")
 
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=500,
@@ -102,9 +101,17 @@ def generate_response(docsearch, chain, prompt):
     try:
         if not docsearch or not chain:
             raise ValueError("Invalid docsearch or chain.")
+         # Estimate the number of tokens in the prompt
+        prompt_token_count = estimate_tokens(prompt)
         docs = docsearch.similarity_search(prompt)
+        
+        # Considering top 4 document from smiliary search
         inputs = {'input_documents': docs, 'question': prompt}
         result = chain.invoke(input=inputs)
+        response_token_count = estimate_tokens(result['output_text'])
+        if prompt_token_count and response_token_count:
+            total_token_count = prompt_token_count + response_token_count
+            print(f"The total estimated number of tokens used is: {total_token_count}, prompt tokens: {prompt_token_count} amd reponse tokens: {response_token_count}")
         return result['output_text']
     except Exception as e:
         st.error(f"An error occurred while generating the response: {e}")
