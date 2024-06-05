@@ -1,5 +1,4 @@
 ---
-
 # Langchain Chat Bot
 
 ## Overview
@@ -21,14 +20,14 @@ Follow the instructions below to set up and run the project locally:
 1. Clone this repository to your local machine using Git:
 
    ```bash
-   git clone https://github.com/your-username/langchain-multi-doc-pdf-chatbot.git
+   git clone https://github.com/your-username/langchain-pdf-switch-chatbot.git
    ```
 
    Alternatively, you can download the ZIP file and extract it to a local directory.
 2. Navigate to the project directory:
 
    ```bash
-   cd langchain-multi-doc-pdf-chatbot
+   cd langchain-pdf-switch-chatbot
    ```
 3. Create a virtual environment (optional but recommended):
 
@@ -78,5 +77,4 @@ This command will start the Streamlit server and open the application in your de
 ### Troubleshooting
 
 - If you encounter any issues during setup or while running the application, please refer to the documentation or create a new issue in the repository.
-
 ---
