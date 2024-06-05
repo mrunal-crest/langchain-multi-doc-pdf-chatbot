@@ -21,14 +21,14 @@ Follow the instructions below to set up and run the project locally:
 1. Clone this repository to your local machine using Git:
 
    ```bash
-   git clone https://github.com/your-username/langchain-chat-bot.git
+   git clone https://github.com/your-username/langchain-multi-doc-pdf-chatbot.git
    ```
 
    Alternatively, you can download the ZIP file and extract it to a local directory.
 2. Navigate to the project directory:
 
    ```bash
-   cd langchain-chat-bot
+   cd langchain-multi-doc-pdf-chatbot
    ```
 3. Create a virtual environment (optional but recommended):
 
